@@ -32,6 +32,7 @@ class KubernetesController(object):
             containers : list[V1Container] = spec.containers
             for container in containers:
                 container_name : str = container.name
+                print(container.lifecycle)
                 logs : str = self.controller_client.read_namespaced_pod_log(name=pod_name, namespace=namespace, container=container_name, tail_lines=5)
                 if len(logs) > 0:
                     print(f"Name: {pod_name:<35} Namespace: {namespace:<12} IP: {pod_ip:<16} Node: {node_name:<10}")
