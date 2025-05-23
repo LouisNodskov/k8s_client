@@ -1,4 +1,4 @@
-from k8s_client.commands.abstract_command_base import Command
+from .abstract_base_command import Command
 
 class Invoker(object):
     def __init__(self):

@@ -61,6 +61,14 @@ class KubernetesController(object):
         }
         self.__dispatch_patch(namespace, deployment_name, patch)
 
+    def resume_deployment(self: 'KubernetesController', namespace: str, deployment_name: str) -> None:
+        patch = {
+            "spec": {
+                "paused": False
+            }
+        }
+        self.__dispatch_patch(namespace, deployment_name, patch)
+
     def __dispatch_patch(self: 'KubernetesController', namespace: str, deployment_name: str, patch: dict[Any]) -> None:
         self.apps_client.patch_namespaced_deployment(
             name=deployment_name,

@@ -2,3 +2,5 @@ from k8s_client.controller.kubernetes_controller import KubernetesController
 from k8s_client.commands.invoker import Invoker
 from k8s_client.commands.list_pods_command import ListPodsCommand
 from k8s_client.commands.restart_deployment_command import RestartDeploymentCommand
+from k8s_client.commands.pause_deployment_command import PauseDeploymentCommand
+from k8s_client.commands.resume_deployment_command import ResumeDeploymentCommand

@@ -1,11 +1,13 @@
+from k8s_client import KubernetesController
 from .abstract_base_command import Command
-from k8s_client.controller.kubernetes_controller import KubernetesController
+import time
 
-class RestartDeploymentCommand(Command):
+class PauseDeploymentCommand(Command):
     def __init__(self, controller : KubernetesController, name : str, namespace : str = "default"):
         self.controller : KubernetesController = controller
         self.namespace : str = namespace
-        self.name = name
+        self.name : str = name
 
     def execute(self):
-        self.controller.restart_deployment(self.namespace, self.name)
+        self.controller.pause_deployment(self.namespace, self.name)
+
