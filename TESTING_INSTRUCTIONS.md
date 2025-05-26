@@ -46,6 +46,8 @@ This document provides instructions on how to set up the environment and test th
 
 ## 3. Setup and Run the Flask Application
 
+**Important:** All commands in this section should be executed from the root directory of the project (the one containing the `k8s_client` directory and `requirements.txt`).
+
 1.  **Clone the repository (if you haven't already):**
     ```bash
     # git clone <repository-url>
@@ -62,13 +64,18 @@ This document provides instructions on how to set up the environment and test th
     ```
 
 3.  **Run the Flask application:**
-    From the root of the project directory:
     ```bash
-    python k8s_client/web_app.py
+    # From the project root directory:
+    python -m k8s_client.web_app
     ```
-    Alternatively, you can use the `flask` command (ensure you are in the directory containing `k8s_client` or set `FLASK_APP`):
     ```bash
-    # FLASK_APP=k8s_client.web_app flask run --host=0.0.0.0 --port=5000
+    # Alternatively, from the project root directory, you can use the `flask` command:
+    # Ensure FLASK_APP points to the web_app.py file relative to your current directory.
+    FLASK_APP=k8s_client/web_app.py flask run --host=0.0.0.0 --port=5000
+    ```
+    ```bash
+    # As another alternative, from the project root directory:
+    python k8s_client/web_app.py
     ```
     The application will typically start on `http://0.0.0.0:5000/`.
 

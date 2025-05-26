@@ -25,5 +25,13 @@ def manage_deployment(deployment_name: str, command: str):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
+    import os
+    import sys
+    # Add the project root to sys.path to allow direct execution of web_app.py
+    # and resolve imports like 'from k8s_client.controller...'
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
+
     # Note: For development only. For production, use a WSGI server.
     app.run(debug=True, host='0.0.0.0', port=5000)
